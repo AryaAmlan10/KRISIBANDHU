@@ -1,0 +1,336 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #e9f9e8;
+    color: #123c20;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    min-height: 110px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 35px;
+    box-shadow: 0 3px 12px rgba(0, 80, 20, 0.12);
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    font-size: 65px;
+}
+
+.logo h1 {
+    font-size: 35px;
+    color: #087b25;
+    font-weight: 800;
+}
+
+.logo p {
+    font-size: 17px;
+    font-style: italic;
+    color: #17672a;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #155b27;
+    border: 1px solid #c5dfc5;
+    padding: 15px 22px;
+    border-radius: 35px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.navigation a:hover,
+.navigation a.active {
+    background: #16852b;
+    color: white;
+}
+
+/* Main Layout */
+.main-container {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    gap: 15px;
+    padding: 20px;
+    min-height: 760px;
+}
+
+/* Farmer Section */
+.farmer-section {
+    background: linear-gradient(#d9f8fa, #a8e8b5);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.farmer-message {
+    text-align: right;
+    color: #126d2a;
+    font-size: 21px;
+    font-style: italic;
+    z-index: 1;
+}
+
+.farmer-image {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.farmer-placeholder {
+    font-size: 100px;
+    text-align: center;
+}
+
+.farmer-placeholder p {
+    font-size: 18px;
+    color: #17632a;
+    font-weight: bold;
+}
+
+.category-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    z-index: 1;
+}
+
+.category-card {
+    background: #ffffff;
+    border: 1px solid #83c96f;
+    border-radius: 18px;
+    padding: 15px 5px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 80, 20, 0.12);
+}
+
+.category-card span {
+    font-size: 32px;
+}
+
+.category-card p {
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+/* Chatbot Section */
+.chatbot-section {
+    background: white;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0, 80, 20, 0.15);
+    display: flex;
+    flex-direction: column;
+    min-height: 700px;
+    overflow: hidden;
+}
+
+.chatbot-header {
+    background: linear-gradient(110deg, #087b22, #168b20);
+    color: white;
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.bot-icon {
+    font-size: 55px;
+}
+
+.chatbot-header h2 {
+    font-size: 27px;
+}
+
+.chatbot-header p {
+    font-size: 16px;
+    font-style: italic;
+    margin-top: 8px;
+}
+
+/* Messages */
+.chat-messages {
+    flex: 1;
+    padding: 25px;
+    overflow-y: auto;
+    min-height: 300px;
+}
+
+.bot-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.message-icon {
+    font-size: 35px;
+}
+
+.message-content {
+    background: #e0f5d9;
+    padding: 16px 20px;
+    border-radius: 22px;
+    color: #152b19;
+    line-height: 1.7;
+    max-width: 85%;
+}
+
+.message-content small {
+    display: block;
+    color: #55745a;
+    margin-top: 8px;
+}
+
+.user-message {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.user-message .message-content {
+    background: #d5f0d4;
+}
+
+/* Mode Buttons */
+.mode-selection {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    padding: 15px;
+}
+
+.mode-btn {
+    border: 1px solid #a8d5a5;
+    border-radius: 35px;
+    padding: 13px 22px;
+    background: #f6fff4;
+    color: #155b27;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.mode-btn.active {
+    background: #16852b;
+    color: white;
+}
+
+/* Input */
+.chat-input-area {
+    display: flex;
+    align-items: center;
+    border: 1px solid #b6d7b6;
+    border-radius: 40px;
+    padding: 8px 10px 8px 22px;
+    margin: 10px 20px 35px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    min-width: 0;
+}
+
+.chat-input-area button {
+    width: 58px;
+    height: 58px;
+    border: none;
+    border-radius: 50%;
+    background: #16852b;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.chat-input-area button:hover {
+    background: #075e1c;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(90deg, #08651c, #168d27);
+    color: white;
+    text-align: center;
+    padding: 25px;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .header {
+        flex-direction: column;
+    }
+
+    .navigation {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main-container {
+        grid-template-columns: 1fr;
+    }
+
+    .farmer-section {
+        min-height: 450px;
+    }
+
+    .chatbot-section {
+        min-height: 600px;
+    }
+}
+
+@media (max-width: 500px) {
+    .logo h1 {
+        font-size: 25px;
+    }
+
+    .navigation a {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .category-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chatbot-header h2 {
+        font-size: 20px;
+    }
+
+    .chatbot-header p {
+        font-size: 13px;
+    }
+}
+

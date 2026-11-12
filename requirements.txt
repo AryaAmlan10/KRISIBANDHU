@@ -1,0 +1,9 @@
+fastapi[standard]
+python-dotenv
+google-genai
+pydantic
+python-multipart
+langchain-text-splitters
+pypdf
+faiss-cpu
+numpy
