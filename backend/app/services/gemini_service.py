@@ -1,52 +1,52 @@
 
 from google import genai
+from google.genai import types
+
 from backend.app.config import GEMINI_API_KEY, GEMINI_MODEL
-from backend.app.rag.embeddings import create_embeddings
-from backend.app.rag.retriever import search_documents
+
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY is missing from .env")
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
 
-def generate_answer(question: str, use_rag: bool = False) -> str:
-
-    if not use_rag:
-        prompt = f"""
-        You are KRISIBANDHU, a helpful farming assistant.
-
-        Answer the farmer's question clearly and simply.
-
-        Farmer's question: {question}
-        """
-
-    else:
-        query_embedding = create_embeddings([question])[0]
-
-        results = search_documents(query_embedding, top_k=3)
-
-        context = "\n\n".join(
-            result["content"] for result in results
-        )
-
-        prompt = f"""
-        You are KRISIBANDHU, a farming assistant.
-
-        Answer the farmer using the farming information below.
-
-        Farming information:
-        {context}
-
-        Farmer's question:
-        {question}
-
-        If the information is insufficient, clearly say so.
-        Do not invent facts or claim information came from
-        the documents when it did not.
-        """
+# TEXT QUESTION ANSWERING
+def generate_answer(question: str, use_rag: bool = False):
 
     response = client.models.generate_content(
         model=GEMINI_MODEL,
-        contents=prompt
+        contents=question
     )
 
-    return response.text or "Sorry, I could not generate an answer."
+    return response.text
 
+
+# IMAGE ANALYSIS
+def analyze_image(image_bytes: bytes, mime_type: str, question: str):
+
+    prompt = f"""
+    You are KRISIBANDHU, an agricultural assistant.
+
+    Analyze the uploaded farming image.
+
+    User question: {question}
+
+    Identify visible crop or soil characteristics.
+    Provide practical farming guidance.
+    If something cannot be identified clearly,
+    explain that you are uncertain.
+
+    Give a simple and helpful answer to the farmer.
+    """
+
+    image_part = types.Part.from_bytes(
+        data=image_bytes,
+        mime_type=mime_type
+    )
+
+    response = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=[prompt, image_part]
+    )
+
+    return response.text
