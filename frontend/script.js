@@ -1,4 +1,10 @@
 
+/* =========================================
+   KRISIBANDHU - COMPLETE JAVASCRIPT
+========================================= */
+
+// DOM ELEMENTS
+
 const chatForm = document.getElementById("chatForm");
 const userInput = document.getElementById("userInput");
 const chatMessages = document.getElementById("chatMessages");
@@ -12,8 +18,13 @@ const picturePreview = document.getElementById("picturePreview");
 
 let answerMode = "general";
 
-/* CHANGE CHAT MODE */
+
+/* =========================================
+   CHANGE CHAT MODE
+========================================= */
+
 function setMode(mode) {
+
     answerMode = mode;
 
     generalMode.classList.toggle("selected", mode === "general");
@@ -27,166 +38,260 @@ function setMode(mode) {
 generalMode.addEventListener("click", () => setMode("general"));
 domainMode.addEventListener("click", () => setMode("domain"));
 
-/* FORMAT INLINE BOLD TEXT SAFELY */
+
+/* =========================================
+   FORMAT INLINE BOLD TEXT SAFELY
+========================================= */
+
 function addFormattedText(element, text) {
-    const parts = text.split(/(\*\*.*?\*\*)/g);
+
+    const parts = String(text).split(/(\*\*.*?\*\*)/g);
 
     parts.forEach(part => {
+
         if (part.startsWith("**") && part.endsWith("**")) {
+
             const strong = document.createElement("strong");
+
             strong.textContent = part.slice(2, -2);
+
             element.appendChild(strong);
+
         } else {
+
             element.appendChild(document.createTextNode(part));
+
         }
+
     });
 }
 
-/* FORMAT GEMINI ANSWER */
+
+/* =========================================
+   FORMAT GEMINI ANSWER
+========================================= */
+
 function renderAnswer(bubble, answer) {
+
     bubble.innerHTML = "";
 
-    // Handle actual newlines and literal \n sequences.
     const lines = String(answer)
         .replace(/\\n/g, "\n")
         .replace(/\r\n/g, "\n")
         .split("\n");
 
     lines.forEach(line => {
+
         const cleanLine = line.trim();
 
         if (!cleanLine) {
+
             const space = document.createElement("div");
+
             space.className = "answer-space";
+
             bubble.appendChild(space);
+
             return;
         }
 
-        // WARNING heading
+
+        // WARNING HEADING
+
         const warning = cleanLine.match(
             /^(?:#{1,3}\s*)?(?:\*\*)?WARNING(?:\*\*)?\s*:?\s*(.*)$/i
         );
 
         if (warning) {
+
             const box = document.createElement("div");
+
             box.className = "answer-alert warning-alert";
 
             const heading = document.createElement("h3");
+
             heading.textContent = "⚠ WARNING";
+
             box.appendChild(heading);
 
             if (warning[1]) {
+
                 const content = document.createElement("p");
+
                 addFormattedText(content, warning[1]);
+
                 box.appendChild(content);
+
             }
 
             bubble.appendChild(box);
+
             return;
         }
 
-        // GOOD heading
+
+        // GOOD HEADING
+
         const good = cleanLine.match(
             /^(?:#{1,3}\s*)?(?:\*\*)?GOOD(?:\*\*)?\s*:?\s*(.*)$/i
         );
 
         if (good) {
+
             const box = document.createElement("div");
+
             box.className = "answer-alert good-alert";
 
             const heading = document.createElement("h3");
+
             heading.textContent = "✓ GOOD";
+
             box.appendChild(heading);
 
             if (good[1]) {
+
                 const content = document.createElement("p");
+
                 addFormattedText(content, good[1]);
+
                 box.appendChild(content);
+
             }
 
             bubble.appendChild(box);
+
             return;
         }
 
-        // Markdown headings
+
+        // MARKDOWN HEADINGS
+
         const headingMatch = cleanLine.match(/^(#{1,3})\s+(.+)$/);
 
         if (headingMatch) {
+
             const heading = document.createElement(
                 headingMatch[1].length === 1 ? "h3" : "h4"
             );
 
             addFormattedText(heading, headingMatch[2]);
+
             heading.className = "answer-heading";
+
             bubble.appendChild(heading);
+
             return;
         }
 
-        // Bullet points
+
+        // BULLET POINTS
+
         if (/^[-*]\s+/.test(cleanLine)) {
+
             const item = document.createElement("div");
+
             item.className = "answer-list-item";
 
             const bullet = document.createElement("span");
+
             bullet.textContent = "•";
 
             const content = document.createElement("span");
-            addFormattedText(content, cleanLine.replace(/^[-*]\s+/, ""));
+
+            addFormattedText(
+                content,
+                cleanLine.replace(/^[-*]\s+/, "")
+            );
 
             item.append(bullet, content);
+
             bubble.appendChild(item);
+
             return;
         }
 
-        // Numbered points
+
+        // NUMBERED POINTS
+
         const numberMatch = cleanLine.match(/^(\d+)\.\s+(.+)$/);
 
         if (numberMatch) {
+
             const item = document.createElement("div");
+
             item.className = "answer-list-item";
 
             const number = document.createElement("span");
+
             number.className = "answer-number";
+
             number.textContent = numberMatch[1] + ".";
 
             const content = document.createElement("span");
+
             addFormattedText(content, numberMatch[2]);
 
             item.append(number, content);
+
             bubble.appendChild(item);
+
             return;
         }
 
-        // Normal paragraph
+
+        // NORMAL PARAGRAPH
+
         const paragraph = document.createElement("p");
+
         paragraph.className = "answer-paragraph";
+
         addFormattedText(paragraph, cleanLine);
+
         bubble.appendChild(paragraph);
+
     });
+
 }
 
-/* DISPLAY CHAT MESSAGE */
+
+/* =========================================
+   DISPLAY CHAT MESSAGE
+========================================= */
+
 function addMessage(text, sender) {
+
     const message = document.createElement("div");
+
     message.classList.add("message", `${sender}-message`);
 
     if (sender === "bot") {
+
         const avatar = document.createElement("span");
+
         avatar.className = "message-avatar";
+
         avatar.textContent = "🤖";
+
         message.appendChild(avatar);
+
     }
 
     const bubble = document.createElement("div");
+
     bubble.className = "bubble";
 
     if (sender === "bot") {
+
         renderAnswer(bubble, text);
+
     } else {
+
         bubble.textContent = text;
+
     }
 
     message.appendChild(bubble);
+
     chatMessages.appendChild(message);
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -194,8 +299,13 @@ function addMessage(text, sender) {
     return bubble;
 }
 
-/* PICTURE PREVIEW */
+
+/* =========================================
+   PICTURE PREVIEW
+========================================= */
+
 pictureUpload.addEventListener("change", function () {
+
     const file = this.files[0];
 
     picturePreview.innerHTML = "";
@@ -203,57 +313,88 @@ pictureUpload.addEventListener("change", function () {
     if (!file) return;
 
     if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+
         alert("Please select a JPG, PNG or WEBP image.");
+
         this.value = "";
+
         return;
     }
 
     const reader = new FileReader();
 
     reader.onload = function (event) {
+
         const img = document.createElement("img");
+
         img.src = event.target.result;
+
         img.alt = "Uploaded farming picture";
+
         picturePreview.appendChild(img);
+
     };
 
     reader.readAsDataURL(file);
+
 });
 
-/* SEND MESSAGE OR IMAGE */
+
+/* =========================================
+   SEND MESSAGE OR IMAGE
+========================================= */
+
 chatForm.addEventListener("submit", async function (event) {
+
     event.preventDefault();
 
     const question = userInput.value.trim();
+
     const file = pictureUpload.files[0];
 
     if (!question && !file) return;
 
+
+    // DISPLAY USER MESSAGE
+
     if (file) {
+
         addMessage(
             question
                 ? `📷 Image: ${file.name}\n${question}`
                 : `📷 Image: ${file.name}`,
             "user"
         );
+
     } else {
+
         addMessage(question, "user");
+
     }
+
 
     userInput.value = "";
 
     const thinkingBubble = addMessage("Thinking...", "bot");
 
     const sendButton = chatForm.querySelector(".send-button");
+
     sendButton.disabled = true;
 
+
     try {
+
         let response;
 
+
+        // IMAGE ANALYSIS API
+
         if (file) {
+
             const formData = new FormData();
 
             formData.append("file", file);
+
             formData.append(
                 "question",
                 question || "Please analyze this farming image."
@@ -266,34 +407,63 @@ chatForm.addEventListener("submit", async function (event) {
                     body: formData
                 }
             );
-        } else {
+
+        }
+
+
+        // NORMAL CHAT API
+
+        else {
+
             response = await fetch(
                 "http://127.0.0.1:8001/api/chat",
                 {
                     method: "POST",
+
                     headers: {
                         "Content-Type": "application/json"
                     },
+
                     body: JSON.stringify({
+
                         question: question,
+
                         use_rag: answerMode === "domain"
+
                     })
                 }
             );
+
         }
+
+
+        // GET BACKEND RESPONSE
 
         const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(data.detail || "Unable to get an answer.");
+
+            throw new Error(
+                data.detail || "Unable to get an answer."
+            );
+
         }
+
+
+        // DISPLAY GEMINI ANSWER
 
         renderAnswer(thinkingBubble, data.answer);
 
+
+        // CLEAR PICTURE AFTER SUCCESS
+
         pictureUpload.value = "";
+
         picturePreview.innerHTML = "";
 
+
     } catch (error) {
+
         console.error("Chat error:", error);
 
         renderAnswer(
@@ -302,16 +472,52 @@ chatForm.addEventListener("submit", async function (event) {
         );
 
     } finally {
+
         sendButton.disabled = false;
+
         userInput.focus();
+
         chatMessages.scrollTop = chatMessages.scrollHeight;
+
     }
+
 });
 
-/* FEATURE CARDS */
+
+/* =========================================
+   FEATURE CARDS
+========================================= */
+
 document.querySelectorAll(".feature").forEach(button => {
+
     button.addEventListener("click", () => {
+
         userInput.value = button.dataset.prompt;
+
         userInput.focus();
+
     });
+
 });
+
+
+/* =========================================
+   NEW UI - SUGGESTED QUESTION BUTTONS
+========================================= */
+
+document.querySelectorAll(".suggestion").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+        userInput.value = button.dataset.prompt;
+
+        userInput.focus();
+
+    });
+
+});
+
+
+/* =========================================
+   KRISIBANDHU JAVASCRIPT COMPLETED
+========================================= */

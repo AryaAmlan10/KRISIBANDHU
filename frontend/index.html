@@ -7,145 +7,267 @@
     <title>KRISIBANDHU - AI Farming Assistant</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- Header -->
+    <!-- HEADER -->
     <header class="topbar">
+
         <div class="brand">
             <span class="brand-icon">🌿</span>
             <div>
                 <h1>KRISIBANDHU</h1>
-                <p>Your AI Farming Assistant</p>
+                <p>AI Farming Assistant</p>
             </div>
         </div>
 
-        <nav>
-            <a href="#" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#features">Features</a>
-            <a href="#chat">Chatbot</a>
-        </nav>
+        <div class="header-slogan">
+            🌱 Smart Farming... Prosperous Farming...
+        </div>
+
+        <span class="header-status">● Online</span>
+
     </header>
 
-    <!-- Main Content -->
-    <main class="layout">
 
-        <!-- Left Panel -->
+    <!-- MAIN DASHBOARD -->
+    <main class="dashboard">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <div class="sidebar-logo">🌾</div>
+
+            <nav>
+                <a href="#" class="sidebar-link active">
+                    🏠 <span>Home</span>
+                </a>
+
+                <a href="#chat" class="sidebar-link">
+                    💬 <span>Chat</span>
+                </a>
+
+                <a href="#about" class="sidebar-link">
+                    📋 <span>About</span>
+                </a>
+
+                <a href="#features" class="sidebar-link">
+                    🌱 <span>Features</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                Together<br>
+                for a<br>
+                Green India
+                <span>🌿</span>
+            </div>
+
+        </aside>
+
+
+        <!-- FARMER PANEL -->
         <section class="farmer-panel" id="about">
 
             <div class="slogan">
+
+                <span class="welcome-label">
+                    WELCOME TO SMART FARMING
+                </span>
+
                 <h2>Smart Farming...</h2>
                 <h2>Bright Future...</h2>
+
                 <p>
                     Get expert advice, improve productivity
-                    and grow sustainably.
+                    and grow sustainably with your AI farming assistant.
                 </p>
+
             </div>
 
-            <!-- Farmer Image -->
+
+            <!-- FARMER IMAGE -->
             <div class="farm-scene">
+
                 <img
-                    src="assets/farmer.png"
+                    src="./assets/cartoon-farmer.png"
                     alt="Farmer standing in a green agricultural field"
                     class="farmer-image"
+                    loading="eager"
                 >
-            </div>
 
-            <!-- Feature Cards -->
-            <div class="feature-grid" id="features">
-
-                <button class="feature" type="button"
-                    data-prompt="How can I improve my crop production?">
-                    <span>🌱</span>
-                    <p>Crop Guidance</p>
-                </button>
-
-                <button class="feature" type="button"
-                    data-prompt="Give me advice about animal farming.">
-                    <span>🐄</span>
-                    <p>Animal Farming</p>
-                </button>
-
-                <button class="feature" type="button"
-                    data-prompt="What government farming schemes are available?">
-                    <span>💰</span>
-                    <p>Subsidies & Schemes</p>
-                </button>
-
-                <button class="feature" type="button"
-                    data-prompt="How can I improve my soil health?">
-                    <span>🌿</span>
-                    <p>Soil Health</p>
-                </button>
+                <p class="image-error" id="farmerImageError">
+                    🌱 Farmer image could not be loaded.
+                    Please check frontend/assets/farmer.png
+                </p>
 
             </div>
+
+
+            <div class="farmer-caption">
+                <span>🌱</span>
+                <p>Empowering Farmers with Smart Technology</p>
+            </div>
+
         </section>
 
-        <!-- Right Chatbot Panel -->
+
+        <!-- CHATBOT PANEL -->
         <section class="chat-card" id="chat">
 
+            <!-- CHAT HEADER -->
             <div class="chat-header">
+
                 <span class="bot-avatar">🤖</span>
-                <div>
+
+                <div class="chat-title">
                     <h2>KRISIBANDHU Chatbot</h2>
-                    <p>Ask anything about farming, crops, animals and more!</p>
+                    <p>Your intelligent farming assistant</p>
                 </div>
+
                 <span class="status">● Online</span>
+
             </div>
 
-            <!-- Chat Messages -->
+
+            <!-- WELCOME MESSAGE -->
+            <div class="welcome-box">
+
+                <div class="welcome-bot">🤖</div>
+
+                <div>
+                    <h2>Hello! 👋</h2>
+
+                    <p>
+                        I am <strong>KRISIBANDHU</strong>,
+                        your farming assistant.
+                    </p>
+
+                    <p>
+                        Ask me anything about crops, farming,
+                        subsidies and more!
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- CHAT MESSAGES -->
             <div class="chat-messages" id="chatMessages">
 
                 <div class="message bot-message">
+
                     <span class="message-avatar">🤖</span>
+
                     <div class="bubble">
                         <p><strong>Namaste! 👋</strong></p>
                         <p>I am KRISIBANDHU, your farming assistant.</p>
                         <p>How can I help you today?</p>
                     </div>
+
                 </div>
 
             </div>
 
-            <!-- Mode Selection -->
+
+            <!-- CHAT CONTROLS -->
             <div class="chat-controls">
 
+                <!-- MODES -->
                 <div class="mode-row">
-                    <button type="button"
+
+                    <button
+                        type="button"
                         id="generalMode"
                         class="mode-button selected">
-                        ✅ General Mode
+
+                        🌍 General Mode
+
                     </button>
 
-                    <button type="button"
+                    <button
+                        type="button"
                         id="domainMode"
                         class="mode-button">
-                        🚜 Domain Specific
+
+                        🌱 Domain Mode
+
                     </button>
+
                 </div>
+
 
                 <p class="mode-help" id="modeHelp">
                     General mode: Ask any farming-related question.
                 </p>
 
-                <!-- Chat Input -->
+
+                <!-- SUGGESTED QUESTIONS -->
+                <div class="suggestions">
+
+                    <h3>💡 Try asking:</h3>
+
+                    <button
+                        type="button"
+                        class="suggestion"
+                        data-prompt="How can I grow corn?">
+
+                        🌱 How can I grow corn?
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="suggestion"
+                        data-prompt="What are the best crops for Odisha?">
+
+                        🌾 Best crops for Odisha?
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="suggestion"
+                        data-prompt="What government farming schemes are available?">
+
+                        🏛️ Government schemes for farmers?
+
+                    </button>
+
+                    <button
+                        type="button"
+                        class="suggestion"
+                        data-prompt="How can I prevent crop diseases?">
+
+                        🛡️ How to prevent crop diseases?
+
+                    </button>
+
+                </div>
+
+
+                <!-- INPUT FORM -->
                 <form id="chatForm" class="input-row">
 
-                    <!-- Picture Upload -->
-                    <label for="pictureUpload"
+                    <!-- IMAGE UPLOAD BUTTON -->
+                    <label
+                        for="pictureUpload"
                         class="upload-picture-btn"
                         title="Upload farming picture">
+
                         📷
+
                     </label>
 
                     <input
                         type="file"
                         id="pictureUpload"
-                        accept="image/*"
-                        capture="environment"
+                        accept="image/png,image/jpeg,image/webp"
                         hidden
                     >
 
+
+                    <!-- USER INPUT -->
                     <input
                         type="text"
                         id="userInput"
@@ -154,28 +276,116 @@
                         required
                     >
 
-                    <button type="submit" class="send-button"
+
+                    <!-- SEND BUTTON -->
+                    <button
+                        type="submit"
+                        class="send-button"
                         title="Send message">
+
                         ➤
+
                     </button>
 
                 </form>
 
-                <!-- Picture Preview -->
-                <div id="picturePreview" class="picture-preview"></div>
+
+                <!-- IMAGE PREVIEW -->
+                <div
+                    id="picturePreview"
+                    class="picture-preview">
+                </div>
 
             </div>
+
         </section>
 
     </main>
 
-    <!-- Footer -->
+
+    <!-- BOTTOM FEATURE STRIP -->
+    <section class="feature-strip" id="features">
+
+        <button
+            class="feature"
+            type="button"
+            data-prompt="How can I improve my crop production?">
+
+            <span>🌱</span>
+            <p>Crop Guidance</p>
+
+        </button>
+
+
+        <button
+            class="feature"
+            type="button"
+            data-prompt="Give me advice about animal farming.">
+
+            <span>🐄</span>
+            <p>Animal Farming</p>
+
+        </button>
+
+
+        <button
+            class="feature"
+            type="button"
+            data-prompt="Give me advice about fish farming.">
+
+            <span>🐟</span>
+            <p>Fish Farming</p>
+
+        </button>
+
+
+        <button
+            class="feature"
+            type="button"
+            data-prompt="What government farming schemes are available?">
+
+            <span>💰</span>
+            <p>Subsidies & Schemes</p>
+
+        </button>
+
+
+        <button
+            class="feature"
+            type="button"
+            data-prompt="Give me some smart farming tips.">
+
+            <span>📈</span>
+            <p>Smart Farming Tips</p>
+
+        </button>
+
+    </section>
+
+
+    <!-- FOOTER -->
     <footer>
         🌾 KRISIBANDHU — Empowering Farmers with Knowledge 🌾
     </footer>
 
+
+    <!-- IMAGE ERROR CHECK -->
+    <script>
+        const farmerImage = document.querySelector(".farmer-image");
+        const farmerImageError = document.getElementById("farmerImageError");
+
+        farmerImage.addEventListener("error", function () {
+            farmerImage.style.display = "none";
+            farmerImageError.style.display = "block";
+        });
+
+        farmerImage.addEventListener("load", function () {
+            farmerImageError.style.display = "none";
+        });
+    </script>
+
+    <!-- YOUR CHATBOT JAVASCRIPT -->
     <script src="script.js"></script>
 
 </body>
 </html>
-

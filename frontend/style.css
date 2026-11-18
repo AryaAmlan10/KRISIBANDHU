@@ -1,7 +1,7 @@
 
-/* =========================================
-   KRISIBANDHU - COMPLETE UI DESIGN
-========================================= */
+/* =====================================
+   KRISIBANDHU - NEW DASHBOARD UI
+===================================== */
 
 * {
     margin: 0;
@@ -11,24 +11,24 @@
 
 body {
     font-family: "Segoe UI", Arial, sans-serif;
-    background: #f1f8ef;
+    background: #eff8ed;
     color: #183d21;
     min-height: 100vh;
 }
 
-/* =========================================
-   HEADER
-========================================= */
+/* HEADER */
 
 .topbar {
-    width: 100%;
-    min-height: 85px;
-    padding: 15px 6%;
-    background: #ffffff;
+    min-height: 105px;
+    padding: 15px 35px;
+    background: #fff;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    box-shadow: 0 3px 15px rgba(0, 70, 20, 0.08);
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 3px 15px rgba(0, 70, 20, .08);
+    position: relative;
+    z-index: 2;
 }
 
 .brand {
@@ -38,196 +38,288 @@ body {
 }
 
 .brand-icon {
-    font-size: 38px;
+    font-size: 48px;
 }
 
 .brand h1 {
-    font-size: 24px;
     color: #08752b;
-    font-weight: 800;
+    font-size: 30px;
+    font-weight: 900;
     letter-spacing: 1px;
 }
 
 .brand p {
-    color: #718477;
-    font-size: 12px;
+    color: #55745c;
+    font-size: 14px;
 }
 
-nav {
-    display: flex;
-    align-items: center;
-    gap: 30px;
+.header-slogan {
+    color: #17632c;
+    font-size: 19px;
+    font-weight: 700;
+    font-style: italic;
 }
 
-nav a {
-    text-decoration: none;
-    color: #45634b;
-    font-weight: 600;
-    transition: 0.3s;
+.header-status {
+    padding: 12px 20px;
+    border-radius: 30px;
+    background: #e1f5dc;
+    color: #08752b;
+    font-weight: 700;
+    white-space: nowrap;
 }
 
-nav a:hover,
-nav a.active {
-    color: #0b8b35;
-}
+/* MAIN DASHBOARD */
 
-/* =========================================
-   MAIN LAYOUT
-========================================= */
-
-.layout {
-    max-width: 1450px;
-    margin: 35px auto;
-    padding: 0 25px;
+.dashboard {
     display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: 28px;
-    align-items: stretch;
+    grid-template-columns: 185px minmax(260px, .85fr) minmax(450px, 1.6fr);
+    gap: 20px;
+    padding: 20px;
+    max-width: 1700px;
+    margin: auto;
+    min-height: 720px;
 }
 
-/* =========================================
-   LEFT FARMER PANEL
-========================================= */
+/* SIDEBAR */
 
-.farmer-panel {
-    background: linear-gradient(145deg, #ffffff, #e5f5e2);
+.sidebar {
+    background: linear-gradient(180deg, #08752b, #064d20);
     border-radius: 22px;
-    padding: 30px;
-    box-shadow: 0 8px 25px rgba(0, 80, 25, 0.08);
+    padding: 25px 12px;
+    color: white;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+}
+
+.sidebar-logo {
+    font-size: 58px;
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 12px;
+    text-decoration: none;
+    color: white;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: .3s;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    background: #83d32d;
+    color: #123e17;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    text-align: center;
+    font-size: 19px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: 1.5;
+    padding-top: 35px;
+}
+
+.sidebar-bottom span {
+    display: block;
+    font-size: 35px;
+}
+
+/* FARMER PANEL */
+
+.farmer-panel {
+    background: linear-gradient(145deg, #e2f6dc, #bde9ad);
+    border-radius: 22px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 8px 25px rgba(0, 80, 25, .08);
+}
+
+.slogan {
+    padding: 28px 22px 15px;
+}
+
+.welcome-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    color: #38833b;
 }
 
 .slogan h2 {
     color: #08752b;
-    font-size: 30px;
-    font-weight: 800;
+    font-size: clamp(22px, 2vw, 31px);
+    font-weight: 900;
     line-height: 1.3;
 }
 
 .slogan p {
     margin-top: 12px;
-    color: #617565;
-    font-size: 15px;
+    color: #42684a;
+    font-size: 14px;
     line-height: 1.7;
 }
 
-/* =========================================
-   FARMER IMAGE
-========================================= */
+/* FARMER IMAGE */
 
 .farm-scene {
+    flex: 1;
+    min-height: 350px;
     width: 100%;
-    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
-    border-radius: 18px;
-    background: #dcefd8;
+    background: linear-gradient(180deg, #ccebc4, #e2f6dc);
+    padding: 10px;
 }
 
 .farmer-image {
-    width: 100%;
-    height: 100%;
     display: block;
+    width: 100%;
+    max-width: 430px;
+    height: 100%;
+    min-height: 330px;
+    max-height: none;
     object-fit: cover;
-    border-radius: 18px;
+    object-position: center bottom;
+    visibility: visible;
+    opacity: 1;
 }
 
-/* =========================================
-   FEATURE CARDS
-========================================= */
+/* FARMER IMAGE ERROR MESSAGE */
 
-.feature-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+.image-error {
+    display: none;
+    color: #b42318;
+    text-align: center;
+    padding: 15px;
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.feature {
-    background: #ffffff;
-    border: 1px solid #d8ead5;
-    border-radius: 15px;
-    padding: 20px 12px;
-    cursor: pointer;
-    transition: 0.3s;
-    color: #235b30;
-    box-shadow: 0 3px 10px rgba(0, 70, 20, 0.04);
-}
+/* FARMER CAPTION */
 
-.feature:hover {
-    background: #e5f7e3;
-    border-color: #74bd78;
-    transform: translateY(-3px);
-}
-
-.feature span {
-    font-size: 30px;
-}
-
-.feature p {
-    margin-top: 8px;
-    font-size: 14px;
+.farmer-caption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 8px;
+    background: #e9f8e4;
+    color: #17632c;
+    font-size: 13px;
     font-weight: 700;
 }
 
-/* =========================================
-   CHATBOT CARD
-========================================= */
+/* CHAT CARD */
 
 .chat-card {
-    background: #ffffff;
+    background: #fff;
     border-radius: 22px;
-    box-shadow: 0 8px 25px rgba(0, 80, 25, 0.09);
+    box-shadow: 0 8px 25px rgba(0, 80, 25, .09);
     overflow: hidden;
     display: flex;
     flex-direction: column;
     min-height: 680px;
 }
 
-/* =========================================
-   CHAT HEADER
-========================================= */
+/* CHAT HEADER */
 
 .chat-header {
-    background: linear-gradient(120deg, #08752b, #24a34a);
-    color: #ffffff;
-    padding: 22px;
+    padding: 20px 24px;
     display: flex;
     align-items: center;
     gap: 13px;
+    background: #fff;
+    border-bottom: 1px solid #e4eee1;
 }
 
 .bot-avatar {
-    font-size: 32px;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    background: #e6f6df;
+    border-radius: 50%;
+    font-size: 30px;
 }
 
-.chat-header h2 {
+.chat-title h2 {
     font-size: 19px;
+    color: #12632a;
 }
 
-.chat-header p {
+.chat-title p {
     font-size: 12px;
     margin-top: 5px;
-    color: #e1f6e3;
+    color: #718477;
 }
 
 .status {
     margin-left: auto;
+    color: #15913a;
     font-size: 12px;
+    font-weight: 700;
     white-space: nowrap;
 }
 
-/* =========================================
-   CHAT MESSAGES
-========================================= */
+/* WELCOME BOX */
+
+.welcome-box {
+    margin: 18px 20px;
+    padding: 22px;
+    border-radius: 22px;
+    background: linear-gradient(120deg, #edf9df, #dff3c9);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.welcome-bot {
+    min-width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #fff;
+    display: grid;
+    place-items: center;
+    font-size: 38px;
+}
+
+.welcome-box h2 {
+    color: #08752b;
+    font-size: 23px;
+    margin-bottom: 6px;
+}
+
+.welcome-box p {
+    color: #25452a;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+/* CHAT MESSAGES */
 
 .chat-messages {
     flex: 1;
-    padding: 22px;
+    padding: 15px 22px;
     overflow-y: auto;
-    min-height: 350px;
-    max-height: 550px;
-    background: #fbfefb;
+    min-height: 160px;
+    max-height: 340px;
+    background: #fff;
 }
 
 .message {
@@ -251,7 +343,7 @@ nav a.active {
 }
 
 .bot-message .bubble {
-    background: #e2f4df;
+    background: #e5f5df;
     color: #183d21;
     border-top-left-radius: 4px;
 }
@@ -262,7 +354,7 @@ nav a.active {
 
 .user-message .bubble {
     background: #087b2e;
-    color: #ffffff;
+    color: white;
     border-top-right-radius: 4px;
 }
 
@@ -274,31 +366,31 @@ nav a.active {
     margin-bottom: 0;
 }
 
-/* =========================================
-   CHAT CONTROLS
-========================================= */
+/* CHAT CONTROLS */
 
 .chat-controls {
-    padding: 18px;
-    background: #ffffff;
-    border-top: 1px solid #e5eee4;
+    padding: 20px;
+    background: #fff;
+    border-top: 1px solid #edf2eb;
 }
 
 .mode-row {
     display: flex;
-    gap: 12px;
+    justify-content: center;
+    gap: 15px;
 }
 
 .mode-button {
     flex: 1;
-    padding: 12px;
+    max-width: 250px;
+    padding: 14px;
     border: 1px solid #cfe3ce;
     background: #f5faf4;
-    border-radius: 10px;
+    border-radius: 30px;
     color: #356342;
-    font-weight: 700;
+    font-weight: 800;
     cursor: pointer;
-    transition: 0.3s;
+    transition: .3s;
 }
 
 .mode-button:hover {
@@ -307,28 +399,63 @@ nav a.active {
 
 .mode-button.selected {
     background: #087b2e;
-    color: #ffffff;
+    color: white;
     border-color: #087b2e;
 }
 
 .mode-help {
     color: #728374;
     font-size: 12px;
-    margin: 12px 0;
+    margin: 12px 0 18px;
+    text-align: center;
 }
 
-/* =========================================
-   CHAT INPUT
-========================================= */
+/* SUGGESTED QUESTIONS */
+
+.suggestions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.suggestions h3 {
+    grid-column: 1 / -1;
+    color: #17632c;
+    font-size: 17px;
+    margin-bottom: 12px;
+}
+
+.suggestion {
+    background: #edf8e2;
+    border: 1px solid transparent;
+    border-radius: 13px;
+    padding: 15px 12px;
+    color: #24432b;
+    font-size: 13px;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.suggestion:hover {
+    background: #d8efc9;
+    border-color: #8bc77e;
+    transform: translateY(-2px);
+}
+
+/* CHAT INPUT */
 
 .input-row {
     display: flex;
     align-items: center;
     gap: 10px;
-    background: #f4f9f3;
+    margin-top: 20px;
+    background: #f6faf5;
     border: 1px solid #d5e6d2;
-    border-radius: 13px;
-    padding: 8px;
+    border-radius: 40px;
+    padding: 8px 10px;
+    box-shadow: 0 3px 12px rgba(0, 80, 25, .06);
 }
 
 #userInput {
@@ -337,7 +464,7 @@ nav a.active {
     border: none;
     outline: none;
     background: transparent;
-    padding: 10px;
+    padding: 12px;
     color: #183d21;
     font-size: 14px;
 }
@@ -346,19 +473,19 @@ nav a.active {
     color: #91a295;
 }
 
-/* Picture upload button */
+/* UPLOAD BUTTON */
+
 .upload-picture-btn {
-    width: 40px;
-    height: 40px;
+    width: 42px;
+    height: 42px;
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 50%;
     background: #e0f2df;
     color: #087b2e;
     font-size: 21px;
     cursor: pointer;
-    transition: 0.3s;
     flex-shrink: 0;
 }
 
@@ -366,30 +493,33 @@ nav a.active {
     background: #c8eac6;
 }
 
-/* Send button */
+/* SEND BUTTON */
+
 .send-button {
-    width: 42px;
-    height: 42px;
+    width: 45px;
+    height: 45px;
     border: none;
-    border-radius: 10px;
+    border-radius: 50%;
     background: #087b2e;
-    color: #ffffff;
-    font-size: 21px;
+    color: white;
+    font-size: 23px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: .3s;
     flex-shrink: 0;
 }
 
 .send-button:hover {
     background: #055d22;
+    transform: scale(1.05);
 }
 
 .send-button:disabled {
-    opacity: 0.6;
+    opacity: .6;
     cursor: not-allowed;
 }
 
-/* Picture preview */
+/* PICTURE PREVIEW */
+
 .picture-preview {
     margin-top: 12px;
 }
@@ -402,30 +532,24 @@ nav a.active {
     object-fit: cover;
 }
 
-/* =========================================
-   GEMINI ANSWER FORMATTING
-========================================= */
+/* GEMINI ANSWER FORMATTING */
 
-/* Answer readability */
 .bot-message .bubble {
     color: #17251a;
     font-size: 15px;
     line-height: 1.85;
 }
 
-/* Paragraph spacing */
 .answer-paragraph {
     margin-bottom: 9px;
     color: #26352a;
 }
 
-/* Important bold information */
 .bot-message .bubble strong {
     color: #101010;
     font-weight: 800;
 }
 
-/* Answer headings */
 .answer-heading {
     color: #075e25;
     font-size: 17px;
@@ -433,12 +557,10 @@ nav a.active {
     margin: 13px 0 8px;
 }
 
-/* Blank line spacing */
 .answer-space {
     height: 9px;
 }
 
-/* Bullet and numbered lists */
 .answer-list-item {
     display: flex;
     align-items: flex-start;
@@ -457,7 +579,6 @@ nav a.active {
     min-width: 22px;
 }
 
-/* WARNING and GOOD boxes */
 .answer-alert {
     padding: 13px 15px;
     margin: 13px 0;
@@ -476,7 +597,6 @@ nav a.active {
     margin: 0;
 }
 
-/* Warning style */
 .warning-alert {
     background: #fff0f0;
     border-left-color: #d92d20;
@@ -487,7 +607,6 @@ nav a.active {
     color: #c52222;
 }
 
-/* Good style */
 .good-alert {
     background: #e9f8eb;
     border-left-color: #16852b;
@@ -498,81 +617,182 @@ nav a.active {
     color: #087b25;
 }
 
-/* =========================================
-   FOOTER
-========================================= */
+/* BOTTOM FEATURE STRIP */
+
+.feature-strip {
+    max-width: 1600px;
+    margin: 0 auto 20px;
+    padding: 15px 20px;
+    background: #e8f7d9;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    box-shadow: 0 5px 18px rgba(0, 80, 25, .07);
+}
+
+.feature {
+    border: none;
+    border-right: 1px solid #9fc694;
+    background: transparent;
+    color: #174b25;
+    padding: 12px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.feature:last-child {
+    border-right: none;
+}
+
+.feature:hover {
+    background: #d6efc6;
+    border-radius: 12px;
+    transform: translateY(-3px);
+}
+
+.feature span {
+    font-size: 30px;
+}
+
+.feature p {
+    margin-top: 7px;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+/* FOOTER */
 
 footer {
     text-align: center;
-    padding: 22px 15px;
+    padding: 18px;
     color: #64806a;
     font-size: 13px;
-    background: #ffffff;
-    margin-top: 25px;
+    background: white;
 }
 
-/* =========================================
-   RESPONSIVE DESIGN
-========================================= */
+/* RESPONSIVE DESIGN */
 
-@media (max-width: 900px) {
-    .layout {
+@media (max-width: 1100px) {
+    .dashboard {
+        grid-template-columns: 150px minmax(220px, .8fr) minmax(350px, 1.5fr);
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .header-slogan {
+        font-size: 15px;
+    }
+
+    .suggestions {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 850px) {
+    .dashboard {
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .farmer-panel {
+        min-height: 500px;
     }
 
     .chat-card {
-        min-height: 600px;
+        min-height: 680px;
+    }
+
+    .feature-strip {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .header-slogan {
+        display: none;
     }
 }
 
 @media (max-width: 600px) {
     .topbar {
+        padding: 15px;
+        min-height: 80px;
+    }
+
+    .brand h1 {
+        font-size: 22px;
+    }
+
+    .brand-icon {
+        font-size: 35px;
+    }
+
+    .header-status {
+        font-size: 11px;
+        padding: 9px;
+    }
+
+    .dashboard {
+        display: flex;
         flex-direction: column;
-        gap: 15px;
-        padding: 18px;
-    }
-
-    nav {
-        gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    nav a {
-        font-size: 13px;
-    }
-
-    .layout {
-        padding: 0 12px;
-        margin: 18px auto;
-        gap: 18px;
+        padding: 12px;
+        margin: 0;
     }
 
     .farmer-panel {
-        padding: 20px;
-    }
-
-    .slogan h2 {
-        font-size: 25px;
+        min-height: auto;
     }
 
     .farm-scene {
-        height: 230px;
+        height: 300px;
+        min-height: 300px;
+        flex: none;
+    }
+
+    .farmer-image {
+        min-height: 0;
+        height: 100%;
+        max-height: 290px;
     }
 
     .chat-card {
-        min-height: 550px;
+        min-height: 650px;
+    }
+
+    .welcome-box {
+        padding: 15px;
+        margin: 12px;
+    }
+
+    .welcome-box h2 {
+        font-size: 19px;
+    }
+
+    .welcome-box p {
+        font-size: 12px;
+    }
+
+    .welcome-bot {
+        min-width: 48px;
+        height: 48px;
+        font-size: 28px;
     }
 
     .chat-header {
         padding: 15px;
     }
 
-    .chat-header h2 {
+    .chat-title h2 {
         font-size: 16px;
     }
 
+    .chat-title p {
+        font-size: 11px;
+    }
+
     .chat-messages {
+        min-height: 180px;
         padding: 15px;
     }
 
@@ -585,21 +805,25 @@ footer {
     }
 
     .mode-button {
-        padding: 10px 5px;
+        padding: 11px 5px;
         font-size: 12px;
     }
 
-    .bot-message .bubble {
-        font-size: 14px;
-        padding: 14px;
-        max-width: 95%;
+    .suggestions {
+        grid-template-columns: 1fr;
     }
 
-    .answer-heading {
-        font-size: 16px;
+    .feature-strip {
+        grid-template-columns: repeat(2, 1fr);
+        margin: 10px 12px;
     }
 
-    .feature-grid {
-        gap: 10px;
+    .feature {
+        border-right: none;
+        border-bottom: 1px solid #b4d3a9;
+    }
+
+    footer {
+        font-size: 11px;
     }
 }
